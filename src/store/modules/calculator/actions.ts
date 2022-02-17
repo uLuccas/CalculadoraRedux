@@ -2,7 +2,7 @@ import * as types from "./types";
 import { ICaracter } from "./types";
 import { Dispatch } from "redux";
 
-export function addCaracters(digit: ICaracter, dispatch: Dispatch): void {
+export function addCaracters(digit: string, dispatch: Dispatch): void {
   console.log(digit);
   dispatch({
     type: types.ADD_DIGIT,
@@ -17,7 +17,9 @@ export function cleanInput(dispatch: Dispatch) {
   });
 }
 
-export function getResult(digit: ICaracter, dispatch: Dispatch) {
+export function getResult(digit: string, dispatch: Dispatch) {
+  console.log(digit);
+
   dispatch({
     type: types.RESULT_CALC,
     digit,

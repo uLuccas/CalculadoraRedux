@@ -16,12 +16,13 @@ interface Action {
 const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.RESULT_CALC: {
-      let { digit } = action.equation;
-      const regexMultiplicacaoDivisao = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/gm;
-      const regexSomaSubtracao = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/gm;
+      let { digit } = action;
+      // digit = "4*3-1";
+      // const regexMultiplicacaoDivisao = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/gm;
+      // const regexSomaSubtracao = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/gm;
 
-      let resultRegexMult = regexMultiplicacaoDivisao.exec(digit);
-
+      let resultRegexMult = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/.exec(digit);
+      console.log(resultRegexMult);
       while (resultRegexMult) {
         if (resultRegexMult[2] === "/") {
           let divisao = Number(resultRegexMult[1]) / Number(resultRegexMult[3]);
@@ -32,10 +33,13 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
             Number(resultRegexMult[1]) * Number(resultRegexMult[3]);
           digit = digit.replace(resultRegexMult[0], multiplicacao.toString());
         }
-        resultRegexMult = regexMultiplicacaoDivisao.exec(digit);
+        console.log(digit);
+
+        resultRegexMult = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/.exec(digit);
+        console.log(resultRegexMult);
       }
 
-      let resultRegexSomaSub = regexSomaSubtracao.exec(digit);
+      let resultRegexSomaSub = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/.exec(digit);
 
       while (resultRegexSomaSub) {
         if (resultRegexSomaSub[2] === "+") {
@@ -47,8 +51,11 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
             Number(resultRegexSomaSub[1]) - Number(resultRegexSomaSub[3]);
           digit = digit.replace(resultRegexSomaSub[0], subtracao.toString());
         }
-        resultRegexSomaSub = regexSomaSubtracao.exec(digit);
+        console.log(53, digit);
+        resultRegexSomaSub = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/.exec(digit);
+        console.log(resultRegexSomaSub);
       }
+
       return {
         ...state,
         state: digit,
@@ -71,8 +78,7 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
     }
 
     default:
-      state;
-      break;
+      return state;
   }
 };
 
