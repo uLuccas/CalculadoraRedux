@@ -7,22 +7,21 @@ const INITIAL_STATE: ICaracter = {
   equation: "",
 };
 
-interface Action {
-  type: string;
-  equation: ICaracter;
-  digit: string;
-}
+// interface Action {
+//   type: string;
+//   equation: ICaracter;
+//   digit: string;
+// }
 
 const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
+  let { digit } = action;
+
   switch (action.type) {
     case types.RESULT_CALC: {
-      let { digit } = action;
-      // digit = "4*3-1";
       // const regexMultiplicacaoDivisao = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/gm;
       // const regexSomaSubtracao = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/gm;
-
       let resultRegexMult = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/.exec(digit);
-      console.log(resultRegexMult);
+
       while (resultRegexMult) {
         if (resultRegexMult[2] === "/") {
           let divisao = Number(resultRegexMult[1]) / Number(resultRegexMult[3]);
@@ -33,10 +32,7 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
             Number(resultRegexMult[1]) * Number(resultRegexMult[3]);
           digit = digit.replace(resultRegexMult[0], multiplicacao.toString());
         }
-        console.log(digit);
-
         resultRegexMult = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/.exec(digit);
-        console.log(resultRegexMult);
       }
 
       let resultRegexSomaSub = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/.exec(digit);
@@ -51,29 +47,29 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
             Number(resultRegexSomaSub[1]) - Number(resultRegexSomaSub[3]);
           digit = digit.replace(resultRegexSomaSub[0], subtracao.toString());
         }
-        console.log(53, digit);
         resultRegexSomaSub = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/.exec(digit);
-        console.log(resultRegexSomaSub);
       }
-
+      state.equation = digit;
       return {
         ...state,
-        state: digit,
       };
     }
 
     case types.ADD_DIGIT: {
       let { digit } = action;
-
       return {
         ...state,
-        equation: state.equation + digit,
+        // equation: state.equation + digit,
+        digit: state.digit + digit,
       };
     }
 
     case types.CLEAN_INPUT: {
       return {
+        ...state,
         state: INITIAL_STATE.digit,
+        equation: "",
+        digit: "",
       };
     }
 

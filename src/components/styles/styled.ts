@@ -1,22 +1,21 @@
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+// import { createGlobalStyle } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
   text-align: center;
-  height: auto;
+  height: 500px;
   width: 100%;
 `;
 
-export const Conteudo = styled.div`
-  color: green;
-`;
+interface StyleButtonProps {
+  TypeButton: string;
+}
 
 export const StyleButton = styled.button`
   color: white;
-  font-size: 1.2em;
   padding: 0.25em 1em;
   margin: 5px;
   border: 2px solid black;
@@ -26,6 +25,11 @@ export const StyleButton = styled.button`
   width: 100px;
   height: 50px;
   background-color: gray;
+  font-size: 24px;
+  transition: filter 0.2s;
+  &:hover {
+    filter: brightness(0.7);
+  }
 `;
 
 export const Calculadora = styled.div`
@@ -35,7 +39,7 @@ export const Calculadora = styled.div`
   align-items: center;
   background-color: black;
   width: 500px;
-  height: 300px;
+  height: 450px;
   flex-wrap: wrap;
   border-radius: 40px;
 
