@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Calculadora,
-  Container,
-  StyleButton,
-  TextArea,
-} from "../styles/styled";
+import { Calculadora, Container, StyleButton } from "../styles/styled";
 import * as actions from "../../store/modules/calculator/actions";
 import { RootState } from "../../store";
 

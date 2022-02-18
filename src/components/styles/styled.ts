@@ -57,8 +57,17 @@ export const TextArea = styled.textarea`
   border: solid 0px;
 `;
 
-export const Teclas = styled.div`
+export const AllScren = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: -8px;
+  width: 100%;
+  height: 100vh;
+  background-image: url(https://st.depositphotos.com/1025323/2718/i/950/depositphotos_27183107-stock-photo-mathematics-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 // export const allStyles = createGlobalStyle`
