@@ -6,18 +6,18 @@ export const Container = styled.div`
   justify-content: center;
   padding: 10px;
   text-align: center;
-  height: auto;
+  height: 500px;
   width: 100%;
 `;
 
-export const Conteudo = styled.div`
-  color: green;
-`;
+interface StyleButtonProps {
+  TypeButton: string;
+}
 
 export const StyleButton = styled.button`
   color: white;
   padding: 0.25em 1em;
-  margin:5px;
+  margin: 5px;
   border: 2px solid black;
   border-radius: 50px;
   display: block;
@@ -26,6 +26,10 @@ export const StyleButton = styled.button`
   height: 50px;
   background-color: gray;
   font-size: 24px;
+  transition: filter 0.2s;
+  &:hover {
+    filter: brightness(0.7);
+  }
 `;
 
 export const Calculadora = styled.div`
@@ -35,7 +39,7 @@ export const Calculadora = styled.div`
   align-items: center;
   background-color: black;
   width: 500px;
-  height: 350px;
+  height: 450px;
   flex-wrap: wrap;
   border-radius: 40px;
 

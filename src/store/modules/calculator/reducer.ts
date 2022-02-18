@@ -20,7 +20,6 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
     case types.RESULT_CALC: {
       // const regexMultiplicacaoDivisao = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/gm;
       // const regexSomaSubtracao = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/gm;
-
       let resultRegexMult = /(\d+\.?\d*)([\/\*])(\d+\.?\d*)/.exec(digit);
 
       while (resultRegexMult) {
@@ -51,7 +50,6 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
         resultRegexSomaSub = /(\d+\.?\d*)([\-\+])(\d+\.?\d*)/.exec(digit);
       }
       state.equation = digit;
-      
       return {
         ...state,
       };
@@ -59,16 +57,19 @@ const calc: Reducer = (state: ICaracter = INITIAL_STATE, action) => {
 
     case types.ADD_DIGIT: {
       let { digit } = action;
-
       return {
         ...state,
-        equation: state.equation + digit,
+        // equation: state.equation + digit,
+        digit: state.digit + digit,
       };
     }
 
     case types.CLEAN_INPUT: {
       return {
+        ...state,
         state: INITIAL_STATE.digit,
+        equation: "",
+        digit: "",
       };
     }
 
