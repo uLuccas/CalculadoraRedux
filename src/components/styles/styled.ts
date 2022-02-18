@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+// import { createGlobalStyle } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -16,9 +16,8 @@ export const Conteudo = styled.div`
 
 export const StyleButton = styled.button`
   color: white;
-  font-size: 1.2em;
   padding: 0.25em 1em;
-  margin: 5px;
+  margin:5px;
   border: 2px solid black;
   border-radius: 50px;
   display: block;
@@ -26,6 +25,7 @@ export const StyleButton = styled.button`
   width: 100px;
   height: 50px;
   background-color: gray;
+  font-size: 24px;
 `;
 
 export const Calculadora = styled.div`
@@ -35,7 +35,7 @@ export const Calculadora = styled.div`
   align-items: center;
   background-color: black;
   width: 500px;
-  height: 300px;
+  height: 350px;
   flex-wrap: wrap;
   border-radius: 40px;
 

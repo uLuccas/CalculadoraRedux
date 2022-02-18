@@ -1,5 +1,5 @@
 import * as types from "./types";
-import { ICaracter } from "./types";
+// import { ICaracter } from "./types";
 import { Dispatch } from "redux";
 
 export function addCaracters(digit: string, dispatch: Dispatch): void {

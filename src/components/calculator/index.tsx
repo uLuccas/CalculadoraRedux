@@ -1,32 +1,43 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Calculadora,
   Container,
-  Conteudo,
   StyleButton,
   TextArea,
 } from "../styles/styled";
 import * as actions from "../../store/modules/calculator/actions";
+import { RootState } from "../../store";
 
 const Calculator = () => {
-  const [result, setResult] = useState();
+  const [result, setResult] = useState({digit: '', equation: '', state:'0'});
   const [digits, setDigits] = useState("1*4*3-1/40+199*3-4+345*2");
+
   const dispatch = useDispatch();
-  // const {reducers} = useSelector((state: ) => )
+
+  const resultadao = useSelector((state: RootState) => state.calcReducer)
+  console.log(resultadao)
+
   function calcResult(): void {
     dispatch(actions.getResult(digits, dispatch));
   }
 
+  function cleanerInput (){
+      dispatch(actions.cleanInput(dispatch))
+  }
+
+  useEffect(() =>{
+    setResult(resultadao)
+  },[])
+
   return (
     <Container>
       <Calculadora>
-        <div>
-          <h1>Calc W</h1>
-        </div>
-        <TextArea name="visor">{result}</TextArea>
+      {
+        result.equation ? <h1 style={{ color: "white" }}>{result.equation}</h1> : <h1 style={{ color: "white" }}>{result.state}</h1>
+      }
         <Calculadora>
-          <StyleButton style={{ backgroundColor: "lightgray", color: "black" }}>
+          <StyleButton style={{ backgroundColor: "lightgray", color: "black" }} onClick={() => cleanerInput()}>
             AC
           </StyleButton>
           <StyleButton style={{ backgroundColor: "lightgray", color: "black" }}>
